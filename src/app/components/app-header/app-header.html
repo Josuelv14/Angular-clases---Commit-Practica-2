@@ -1,0 +1,16 @@
+<header class="header">
+  <h1>{{ brand() | uppercase }}</h1>
+  <div class="actions">
+    <button type="button" (click)="toggleInfo()">
+      {{ toggleLabel() }}
+    </button>
+    <button type="button" (click)="changeBrand()">Modificar título</button>
+    <button type="button" (click)="resetBrand()" [disabled]="brand() === 'PPW Angular 21'">
+      Restaurar título
+    </button>
+  </div>
+
+  @if (showInfo()) {
+    <p>Curso PPW - Angular 21 (Standalone)</p>
+  }
+</header>
