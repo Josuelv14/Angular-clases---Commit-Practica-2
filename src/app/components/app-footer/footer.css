@@ -1,0 +1,17 @@
+.footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+code {
+  background: #eee;
+  padding: 2px 4px;
+}

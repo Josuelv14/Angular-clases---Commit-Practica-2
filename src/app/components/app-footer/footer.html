@@ -1,0 +1,19 @@
+<footer class="footer">
+  <hr>
+  <!-- Pipe 1: Uppercase -->
+  <p><strong>Desarrollado por:</strong> {{ author() | uppercase }}</p>
+  
+  <!-- Pipe 2: Date -->
+  <p><strong>Fecha de entrega:</strong> {{ today() | date:'fullDate' }}</p>
+  
+  <!-- Pipe 3: Currency -->
+  <p><strong>Valor estimado del módulo:</strong> {{ projectCost() | currency:'USD' }}</p>
+  
+  <!-- Pipe 4: Percent -->
+  <p><strong>Progreso de la práctica:</strong> {{ completionRate() | percent }}</p>
+  
+  <!-- Pipe 5: JSON (Útil para debugging) -->
+  <p><strong>Configuración técnica:</strong> <code>{{ techStack() | json }}</code></p>
+  
+  <p>© 2026 - Universidad Politécnica Salesiana</p>
+</footer>
