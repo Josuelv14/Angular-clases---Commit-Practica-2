@@ -1,19 +1,24 @@
 <footer class="footer">
-  <hr>
-  <!-- Pipe 1: Uppercase -->
-  <p><strong>Desarrollado por:</strong> {{ author() | uppercase }}</p>
+  <h3>Pipes de Angular</h3>
   
-  <!-- Pipe 2: Date -->
-  <p><strong>Fecha de entrega:</strong> {{ today() | date:'fullDate' }}</p>
+  <p class="pipe-item">
+    <strong>1. Date Pipe:</strong> {{ hoy | date:'longDate' }}
+  </p>
   
-  <!-- Pipe 3: Currency -->
-  <p><strong>Valor estimado del módulo:</strong> {{ projectCost() | currency:'USD' }}</p>
-  
-  <!-- Pipe 4: Percent -->
-  <p><strong>Progreso de la práctica:</strong> {{ completionRate() | percent }}</p>
-  
-  <!-- Pipe 5: JSON (Útil para debugging) -->
-  <p><strong>Configuración técnica:</strong> <code>{{ techStack() | json }}</code></p>
-  
-  <p>© 2026 - Universidad Politécnica Salesiana</p>
+  <p class="pipe-item">
+    <strong>2. Currency Pipe:</strong> {{ costoCurso | currency:'USD' }}
+  </p>
+
+  <p class="pipe-item">
+    <strong>3. Percent Pipe:</strong> {{ progreso() | percent }}
+  </p>
+
+  <p class="pipe-item">
+    <strong>4. TitleCase Pipe:</strong> {{ estudiante | titlecase }}
+  </p>
+
+  <p class="pipe-item">
+    <strong>5. Json Pipe:</strong> 
+    <code>{{ configuracion | json }}</code>
+  </p>
 </footer>

@@ -1,16 +1,26 @@
-<header class="header">
-  <h1>{{ brand() | uppercase }}</h1>
-  <div class="actions">
-    <button type="button" (click)="toggleInfo()">
-      {{ toggleLabel() }}
-    </button>
-    <button type="button" (click)="changeBrand()">Modificar título</button>
-    <button type="button" (click)="resetBrand()" [disabled]="brand() === 'PPW Angular 21'">
-      Restaurar título
-    </button>
-  </div>
+<header class="app-header">
 
-  @if (showInfo()) {
-    <p>Curso PPW - Angular 21 (Standalone)</p>
-  }
-</header>
+  <span class="title">  {{brand()| uppercase}}</span>
+
+  <!----NAVBAR-------->
+<nav class="app-header__nav">
+  <!--
+    [routerLinkActiveOptions]="{ exact: true }" → solo activo cuando la URL es exactamente "/".
+    Sin esto, "/" estaría activo también en /students, /profile, etc.
+  -->
+  <a class="nav-link"
+     routerLink="/"
+     routerLinkActive="nav-link--active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    Inicio
+  </a>
+
+  <!-- Estudiantes no necesita exact: "/students" no es prefijo de ninguna otra ruta. -->
+  <a class="nav-link"
+     routerLink="/students"
+     routerLinkActive="nav-link--active">
+    Estudiantes
+  </a>
+</nav>
+
+  </header>

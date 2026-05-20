@@ -1,10 +1,35 @@
-.header {
+.app-header {
+  background-color: #16182c;
+  color: white;
+
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 2rem;
 }
 
-button {
-  width: fit-content;
+/* título */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* navbar */
+.app-header__nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* links */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* link activo */
+.nav-link--active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
 }

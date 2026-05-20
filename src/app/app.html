@@ -1,6 +1,13 @@
+<app-header />
+
+<!-- Contenedor del contenido principal de cada página -->
 <main class="app-shell">
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-hero></app-hero>
-<app-footer></app-footer> <!-- Componente del entregable -->
+  <!--
+    router-outlet: marcador donde Angular inserta el componente
+    de la ruta activa. Se reemplaza al navegar entre páginas.
+  -->
+  <router-outlet />
 </main>
+
+<!-- Footer global: visible en todas las rutas -->
+<app-footer />
