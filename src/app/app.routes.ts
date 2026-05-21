@@ -4,11 +4,13 @@ import { StudentDetailPage } from './features/students/pages/student-detail-page
 import { StudentPage } from './features/students/pages/student-page/student-page';
 import { LayoutsPage } from './features/layouts/pages/layouts-page';
 import { ProjectConfigPage } from './features/project/pages/project-config-page';
+import { ProfilePage } from './features/profile/pages/profile-page';
 export const routes: Routes = [
   { path: '', component: HomePage },
   { path: 'students', component: StudentPage },
   { path: 'layouts', component: LayoutsPage },
   { path: 'students/:id', component: StudentDetailPage },
+  { path: 'profile', component: ProfilePage },
   { 
     path: 'signup', 
     loadComponent: () => import('./features/singup-up/pages/signup-page').then(m => m.SignupPage) 
