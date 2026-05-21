@@ -1,0 +1,65 @@
+<section class="space-y-10">
+  <header class="space-y-3">
+    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">Sign Up</p>
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Crear cuenta</h1>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="max-w-md space-y-4">
+    
+    <div class="space-y-2">
+      <label for="email" class="block text-sm font-semibold text-slate-900">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+        placeholder="tu@email.com"
+      />
+      @if (email.touched && email.hasError('required')) {
+        <p class="text-xs text-red-600 font-medium">El email es obligatorio</p>
+      }
+      @if (email.touched && email.hasError('email')) {
+        <p class="text-xs text-red-600 font-medium">Formato de email no válido</p>
+      }
+    </div>
+
+    <div class="space-y-2">
+      <label for="password" class="block text-sm font-semibold text-slate-900">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+        placeholder="Mínimo 8 caracteres"
+      />
+      @if (password.touched && password.hasError('required')) {
+        <p class="text-xs text-red-600 font-medium">La contraseña es obligatoria</p>
+      }
+      @if (password.touched && password.hasError('minlength')) {
+        <p class="text-xs text-red-600 font-medium">Debe tener al menos 8 caracteres</p>
+      }
+    </div>
+
+    <div class="space-y-2">
+      <label for="confirmPassword" class="block text-sm font-semibold text-slate-900">Confirmar Contraseña</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+        placeholder="Repite tu contraseña"
+      />
+      @if (form.hasError('passwordMismatch') && confirmPassword.touched) {
+        <p class="text-xs text-red-600 font-medium">Las contraseñas no coinciden</p>
+      }
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="w-full rounded-lg bg-sky-700 px-4 py-2 text-white font-semibold transition-all hover:bg-sky-800 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+    >
+      Crear cuenta
+    </button>
+  </form>
+</section>

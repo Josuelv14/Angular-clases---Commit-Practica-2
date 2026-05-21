@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { AppHeroComponent } from "../../../app/components/app-hero/app-hero";
+import { AppHeroComponent } from '../../../components/app-hero/app-hero';
 import { Router } from '@angular/router';
 import { StudentPage } from '../../students/pages/student-page/student-page';
 

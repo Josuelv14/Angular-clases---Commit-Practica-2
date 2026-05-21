@@ -1,0 +1,24 @@
+<section class="space-y-8">
+    
+  <app-hero />
+
+  <!-- Ritmo vertical controlado y comparativa de los dos botones -->
+  <div class="flex justify-center gap-4 py-4">
+
+    <!-- Botón con clase de herencia global CSS -->
+    <button class="btn-primary" (click)="goToStudentsPage()">
+      Ver Estudiantes →
+    </button>
+
+    <!-- Botón implementado puramente con clases de utilidad Tailwind -->
+    <button
+      type="button"
+      (click)="goToStudentsPage()"
+      class="w-fit rounded-md border-2 border-brand bg-transparent px-5 py-2.5 font-medium text-brand transition-colors duration-200 hover:bg-brand hover:text-white cursor-pointer"
+    >
+      Ver Estudiantes (Tailwind) →
+    </button>
+
+  </div>
+
+</section>
