@@ -1,50 +1,49 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { 
-  FormBuilder, 
-  ReactiveFormsModule, 
-  Validators, 
-  FormControl 
-} from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../validators/password-match.validator';
+import { Router } from '@angular/router';
+import { emailUniqueValidator } from '../validators/email-unique.validator';
 
 @Component({
-  selector: 'app-signup-page',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  // CORRECCIÓN AQUÍ:
-  templateUrl: './signup-page.html', 
+  selector: 'app-singnup-page',
+  imports: [ReactiveFormsModule],
+  templateUrl: './signup-page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupPage {
   private fb = inject(FormBuilder);
-  private router = inject(Router);
 
-  // Definimos el formulario con sus validaciones
   form = this.fb.group(
     {
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email], [emailUniqueValidator()]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     },
-    { 
-      validators: passwordMatchValidator 
-    }
+    { validators: passwordMatchValidator },
   );
 
-  // Getters para facilitar el acceso en el HTML
-  get email() { return this.form.get('email')!; }
-  get password() { return this.form.get('password')!; }
-  get confirmPassword() { return this.form.get('confirmPassword')!; }
+  private router = inject(Router);
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log('Datos enviados:', this.form.value);
-      // Navegamos al home tras el éxito
-      this.router.navigate(['/']);
-    } else {
-      // Si hay errores, marcamos todo como tocado para que se vean en rojo
+    if (this.form.invalid) {
+      // Marcar todos los campos como touched para mostrar errores
       this.form.markAllAsTouched();
+
+      return;
     }
+
+    console.log('Datos del formulario:', this.form.value);
+
+    // Por ahora, navegar a home
+    this.router.navigate(['/']);
+  }
+  get email() {
+    return this.form.get('email');
+  }
+  get password() {
+    return this.form.get('password');
+  }
+  get confirmPassword() {
+    return this.form.get('confirmPassword');
   }
 }
