@@ -19,16 +19,27 @@ export class FormUtils {
   /** Switch centralizado de mensajes de error */
   static getTextError(errors: ValidationErrors): string | null {
     for (const key of Object.keys(errors)) {
-      switch (key) {
+     switch (key) {
         case 'required': return 'Este campo es requerido';
+        case 'requiredTrue': return 'Debe aceptar este campo para continuar'; // Subelo aquí
         case 'minlength': return `Mínimo ${errors['minlength'].requiredLength} caracteres`;
         case 'min': return `Valor mínimo permitido: ${errors['min'].min}`;
         case 'email': return 'Formato de correo inválido';
         case 'emailTaken': return 'Este correo ya está registrado';
         case 'passwordMismatch': return 'Las contraseñas no coinciden';
-        default: return 'Campo no válido';
+        default: return 'Campo no válido'; // El default siempre al final
       }
     }
     return null;
+  }
+  static isValidFieldInArray(formArray: FormArray, index: number): boolean {
+    const control = formArray.controls[index];
+    return !!control?.errors && control.touched;
+  }
+  static getFieldErrorInArray(formArray: FormArray, index: number): string | null {
+    if (formArray.controls.length === 0) return null;
+
+    const errors = formArray.controls[index]?.errors ?? {};
+    return FormUtils.getTextError(errors);
   }
 }

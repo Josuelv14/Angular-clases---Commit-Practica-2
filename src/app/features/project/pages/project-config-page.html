@@ -1,0 +1,73 @@
+<section class="max-w-3xl mx-auto space-y-6 p-6">
+  <header class="border-b pb-4">
+    <h1 class="text-3xl font-bold text-slate-900">Configuración del Proyecto</h1>
+  </header>
+
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="space-y-8">
+    
+    <div class="space-y-2">
+      <label class="font-semibold text-slate-700">Nombre</label>
+      <input type="text" formControlName="nombre" class="w-full rounded-lg border p-2 focus:ring-2 focus:ring-sky-500 outline-none" />
+      @if (formUtils.isValidField(myForm, 'nombre')) {
+        <p class="text-xs text-red-500">{{ formUtils.getFieldError(myForm, 'nombre') }}</p>
+      }
+    </div>
+
+    <div class="space-y-4 p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+      <label class="font-semibold text-slate-700">Lenguajes (Mínimo 2)</label>
+      
+      <div class="flex gap-2">
+        <input type="text" [formControl]="newLenguaje" placeholder="Ej: Python" (keydown.enter)="$event.preventDefault(); onAddLenguaje()" class="flex-1 rounded-lg border p-2 text-sm" />
+        <button type="button" (click)="onAddLenguaje()" [disabled]="newLenguaje.invalid" class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-bold disabled:opacity-50">Agregar</button>
+      </div>
+
+      <div formArrayName="lenguajes" class="space-y-2">
+        @for(control of lenguajes.controls; track control; let i = $index) {
+          <div class="flex gap-2">
+            <input [formControlName]="i" class="flex-1 rounded-lg border p-2 text-sm" />
+            <button type="button" (click)="onDeleteLenguaje(i)" class="text-red-600 font-bold px-2">✕</button>
+          </div>
+          @if (formUtils.isValidFieldInArray(lenguajes, i)) {
+            <p class="text-xs text-red-500">{{ formUtils.getFieldErrorInArray(lenguajes, i) }}</p>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="space-y-2">
+        <label class="font-semibold text-slate-700">Tipo de Proyecto</label>
+        <div class="flex flex-col gap-2">
+          @for(t of ['frontend', 'backend', 'fullstack']; track t) {
+            <label class="flex items-center gap-2 capitalize cursor-pointer">
+              <input type="radio" [value]="t" formControlName="tipo" class="accent-sky-600" /> {{t}}
+            </label>
+          }
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <label class="font-semibold text-slate-700 block">Notificaciones</label>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" formControlName="notificaciones" class="sr-only peer" />
+          <div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-sky-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+          <span class="ml-3 text-sm text-slate-600">Activar avisos</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="pt-4 border-t">
+      <label class="flex gap-2 items-center cursor-pointer">
+        <input type="checkbox" formControlName="terminosAceptados" class="w-4 h-4 rounded text-sky-600" />
+        <span class="text-sm">Acepto los términos y condiciones</span>
+      </label>
+      @if (formUtils.isValidField(myForm, 'terminosAceptados')) {
+        <p class="text-xs text-red-500 mt-1">{{ formUtils.getFieldError(myForm, 'terminosAceptados') }}</p>
+      }
+    </div>
+
+    <button type="submit" [disabled]="myForm.invalid" class="w-full bg-sky-600 text-white font-bold py-3 rounded-xl hover:bg-sky-700 transition-colors disabled:opacity-50">
+      Guardar Configuración
+    </button>
+  </form>
+</section>
