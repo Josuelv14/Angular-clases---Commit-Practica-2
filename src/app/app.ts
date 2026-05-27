@@ -8,7 +8,7 @@ import { AppFooterComponent } from './components/app-footer/footer';
   standalone: true,
   imports: [AppHeaderComponent, AppFooterComponent, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrls: ['./app.css'],
 })
 export class App {
   title = 'ppw-angular-21';

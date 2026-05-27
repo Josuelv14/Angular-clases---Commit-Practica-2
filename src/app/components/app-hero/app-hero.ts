@@ -5,7 +5,7 @@ import { Component, computed, signal } from '@angular/core';
   selector: 'app-hero',
   imports: [UpperCasePipe],
   templateUrl: './app-hero.html',
-  styleUrl: './app-hero.css',
+  styleUrls: ['./app-hero.css'],
 })
 export class AppHeroComponent {
   readonly title = signal('Componentes Standalone Reutilizables');

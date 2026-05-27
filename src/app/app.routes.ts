@@ -5,6 +5,7 @@ import { StudentPage } from './features/students/pages/student-page/student-page
 import { LayoutsPage } from './features/layouts/pages/layouts-page';
 import { ProjectConfigPage } from './features/project/pages/project-config-page';
 import { ProfilePage } from './features/profile/pages/profile-page';
+import { UiComponentsPage } from './components/ui/ui-components-page';
 export const routes: Routes = [
   { path: '', component: HomePage },
   { path: 'students', component: StudentPage },
@@ -16,5 +17,9 @@ export const routes: Routes = [
     loadComponent: () => import('./features/singup-up/pages/signup-page').then(m => m.SignupPage) 
   },
   { path: 'project-config', component: ProjectConfigPage },
+  { 
+  path: 'ui-components', 
+  loadComponent: () => import('./components/ui/ui-components-page').then(m => m.UiComponentsPage) 
+  },
   { path: '**', redirectTo: '' },
 ];

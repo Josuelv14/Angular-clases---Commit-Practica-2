@@ -1,46 +1,28 @@
-<header class="app-header">
+﻿<header class="bg-base-100 border-b border-base-200 shadow-sm rounded-md px-4 py-3 w-full">
+  <div class="navbar flex flex-wrap items-center justify-between gap-4">
+    <div class="navbar-start">
+      <a class="btn btn-ghost text-xl font-bold uppercase tracking-[0.16em] transition hover:text-slate-900" routerLink="/">
+        {{ brand() | uppercase }}
+      </a>
+    </div>
 
-  <span class="title">  {{brand()| uppercase}}</span>
-
-  <!----NAVBAR-------->
-<nav class="app-header__nav">
-  <!--
-    [routerLinkActiveOptions]="{ exact: true }" → solo activo cuando la URL es exactamente "/".
-    Sin esto, "/" estaría activo también en /students, /profile, etc.
-  -->
-  <a class="nav-link"
-     routerLink="/"
-     routerLinkActive="nav-link--active"
-     [routerLinkActiveOptions]="{ exact: true }">
-    Inicio
-  </a>
-  <a class="nav-link" 
-   routerLink="/layouts" 
-   routerLinkActive="nav-link--active">
-   Layouts
-</a>
-
-  <!-- Estudiantes no necesita exact: "/students" no es prefijo de ninguna otra ruta. -->
-  <a class="nav-link"
-     routerLink="/students"
-     routerLinkActive="nav-link--active">
-    Estudiantes
-  </a>
-  <a class="nav-link" 
-   routerLink="/signup" 
-   routerLinkActive="nav-link--active">
-   Sign-Up
-</a>
-  <a class="nav-link" 
-     routerLink="/profile" 
-     routerLinkActive="nav-link--active">
-     Perfil
-  </a>
-  <a class="nav-link" 
-     routerLink="/project-config" 
-     routerLinkActive="nav-link--active">
-     Proyecto
-  </a>
-</nav>
-
-  </header>
+    <div class="navbar-center flex flex-1 justify-end">
+      <ul class="menu menu-horizontal px-1 gap-4 flex flex-wrap items-center">
+        <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/" routerLinkActive="menu-active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
+        <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/students" routerLinkActive="menu-active">Estudiantes</a></li>
+        <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/layouts" routerLinkActive="menu-active">Layouts</a></li>
+        <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/ui-components" routerLinkActive="menu-active">Componentes</a></li>
+        <li>
+          <details>
+            <summary class="rounded-md px-3 py-2 transition text-slate-900 hover:text-slate-900 hover:bg-transparent cursor-pointer">Formularios</summary>
+            <ul class="p-2 bg-base-100 rounded-box shadow-xl border border-base-200 mt-2">
+              <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/signup" routerLinkActive="menu-active">Signup</a></li>
+              <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/profile" routerLinkActive="menu-active">Perfil</a></li>
+              <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/project-config" routerLinkActive="menu-active">Configurar Proyecto</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

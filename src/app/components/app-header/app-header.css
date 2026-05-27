@@ -1,35 +1,4 @@
-.app-header {
-  background-color: #16182c;
-  color: white;
+/* Header styles are provided by Tailwind/DaisyUI classes in templates.
+   Keep this file minimal to avoid conflicting global rules. */
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 1rem 2rem;
-}
-
-/* título */
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* navbar */
-.app-header__nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-/* links */
-.nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-/* link activo */
-.nav-link--active {
-  font-weight: bold;
-  border-bottom: 2px solid white;
-}
+:host { display: block; }

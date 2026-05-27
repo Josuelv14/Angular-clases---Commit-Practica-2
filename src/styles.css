@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Variables de tema usadas desde CSS puro si las necesitas */
-  --color-brand: #0f4c81;
-  --color-brand-strong: #0a355c;
-  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+@layer components {
+  .menu-active {
+    @apply bg-sky-600 text-white font-bold !important;
+  }
+
+  .glass-surface {
+    @apply bg-white/60 backdrop-blur-md border border-neutral-200/30;
+  }
+
+  .gradient-surface {
+    @apply bg-gradient-to-r from-sky-500 to-cyan-400 text-white;
+  }
+
+  .bg-surface-container {
+    @apply bg-white;
+  }
+
+  .bg-surface-container-low {
+    @apply bg-slate-50;
+  }
+
+  .text-on-surface {
+    @apply text-slate-900;
+  }
+
+  .text-on-surface-variant {
+    @apply text-slate-600;
+  }
 }
