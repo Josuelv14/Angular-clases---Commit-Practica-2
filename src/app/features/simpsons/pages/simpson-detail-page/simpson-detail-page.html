@@ -1,0 +1,67 @@
+<section class="mx-auto max-w-4xl space-y-6 px-4 pb-8">
+  <a routerLink="/simpsons" class="btn btn-ghost btn-sm">← Volver al listado</a>
+
+  @if (characterResource.isLoading()) {
+    <div class="flex h-56 items-center justify-center rounded-3xl border border-base-200 bg-base-100 shadow-sm">
+      <span class="loading loading-spinner loading-lg text-primary"></span>
+    </div>
+  }
+
+  @if (characterResource.error()) {
+    <div class="alert alert-error rounded-3xl border border-error/20 bg-error/5 text-error">
+      <span>No se pudo cargar el personaje.</span>
+    </div>
+  }
+
+  @if (characterResource.hasValue()) {
+    <article class="rounded-3xl border border-base-200 bg-base-100 p-6 shadow-sm">
+      <div class="grid gap-6 md:grid-cols-[260px_1fr] items-start">
+        <div class="mx-auto md:mx-0">
+          <img
+            [src]="characterResource.value()!.portrait_path"
+            [alt]="characterResource.value()!.name"
+            class="h-56 w-56 rounded-3xl object-cover ring ring-base-300 ring-offset-2 ring-offset-base-100"
+          />
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h2 class="text-3xl font-black tracking-tight text-slate-900">{{ characterResource.value()!.name }}</h2>
+            <p class="text-sm text-slate-500">Detalle de personaje y estado de servicio HTTP.</p>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div class="rounded-3xl border border-base-200 bg-base-200/70 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Ocupación</p>
+              <p class="mt-2 text-base font-semibold text-slate-900">{{ characterResource.value()!.occupation }}</p>
+            </div>
+            <div class="rounded-3xl border border-base-200 bg-base-200/70 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Estado</p>
+              <p class="mt-2 text-base font-semibold text-slate-900">{{ characterResource.value()!.status || 'Desconocido' }}</p>
+            </div>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div class="rounded-3xl border border-base-200 bg-base-200/70 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Género</p>
+              <p class="mt-2 text-base text-slate-900">{{ characterResource.value()!.gender || 'No registrado' }}</p>
+            </div>
+            <div class="rounded-3xl border border-base-200 bg-base-200/70 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Edad</p>
+              <p class="mt-2 text-base text-slate-900">{{ characterResource.value()!.age ?? 'No registrada' }}</p>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-base-200 bg-base-200/70 p-4">
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Frases</p>
+            <div class="mt-3 space-y-2">
+              @for (phrase of characterResource.value()!.phrases; track phrase) {
+                <p class="text-sm text-slate-600">"{{ phrase }}"</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  }
+</section>

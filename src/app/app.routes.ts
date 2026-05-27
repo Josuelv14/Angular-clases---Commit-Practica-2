@@ -18,6 +18,14 @@ export const routes: Routes = [
   },
   { path: 'project-config', component: ProjectConfigPage },
   { 
+    path: 'simpsons', 
+    loadComponent: () => import('./features/simpsons/pages/simpson-page/simpsons-page').then(m => m.SimpsonsPage) 
+  },
+  { 
+    path: 'simpsons/:id', 
+    loadComponent: () => import('./features/simpsons/pages/simpson-detail-page/simpson-detail-page').then(m => m.SimpsonDetailPage) 
+  },
+  { 
   path: 'ui-components', 
   loadComponent: () => import('./components/ui/ui-components-page').then(m => m.UiComponentsPage) 
   },
