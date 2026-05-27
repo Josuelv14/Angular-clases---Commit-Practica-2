@@ -6,7 +6,7 @@
       </a>
     </div>
 
-    <div class="navbar-center flex flex-1 justify-end">
+    <div class="navbar-center flex flex-1 justify-between">
       <ul class="menu menu-horizontal px-1 gap-4 flex flex-wrap items-center">
         <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/" routerLinkActive="menu-active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
         <li><a class="transition text-slate-900 hover:text-slate-900 focus:text-slate-900 active:text-slate-900 visited:text-slate-900 hover:bg-transparent cursor-pointer px-3 py-2 rounded-md" routerLink="/students" routerLinkActive="menu-active">Estudiantes</a></li>
@@ -24,6 +24,24 @@
           </details>
         </li>
       </ul>
+
+      <!-- Auth section -->
+      <div class="navbar-end gap-2">
+        @if (currentUser()) {
+          <!-- Usuario autenticado -->
+          <span class="hidden text-sm text-base-content/60 lg:block">
+            {{ currentUser()!.email }}
+          </span>
+          <button class="btn btn-ghost btn-sm" (click)="logout()">
+            Cerrar sesión
+          </button>
+        } @else {
+          <!-- Sin sesión -->
+          <a class="btn btn-primary btn-sm" routerLink="/auth">
+            Iniciar sesión
+          </a>
+        }
+      </div>
     </div>
   </div>
 </header>

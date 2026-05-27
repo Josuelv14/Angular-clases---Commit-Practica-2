@@ -29,5 +29,9 @@ export const routes: Routes = [
   path: 'ui-components', 
   loadComponent: () => import('./components/ui/ui-components-page').then(m => m.UiComponentsPage) 
   },
+  { 
+    path: 'auth', 
+    loadComponent: () => import('./features/auth/pages/auth-page/auth-page').then(m => m.AuthPageComponent) 
+  },
   { path: '**', redirectTo: '' },
 ];

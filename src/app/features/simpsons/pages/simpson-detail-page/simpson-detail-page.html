@@ -30,6 +30,25 @@
             <p class="text-sm text-slate-500">Detalle de personaje y estado de servicio HTTP.</p>
           </div>
 
+          <!-- Botón de favorito -->
+          @if (authService.currentUser()) {
+            <button
+              class="btn btn-outline btn-sm"
+              [class.btn-warning]="isFavorite()"
+              (click)="toggleFavorite()"
+            >
+              @if (isFavorite()) {
+                ★ Guardado en favoritos
+              } @else {
+                ☆ Agregar a favoritos
+              }
+            </button>
+          } @else {
+            <a class="btn btn-ghost btn-sm" routerLink="/auth">
+              Inicia sesión para guardar favoritos
+            </a>
+          }
+
           <div class="grid gap-3 sm:grid-cols-2">
             <div class="rounded-3xl border border-base-200 bg-base-200/70 p-4">
               <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Ocupación</p>
