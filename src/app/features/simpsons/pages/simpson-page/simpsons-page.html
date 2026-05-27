@@ -18,6 +18,33 @@
   }
 
   @if (simpsonsResource.hasValue()) {
+    <div class="flex items-center justify-between gap-4 mb-6 px-2">
+      <span class="text-sm text-base-content/60">
+        Página {{ paginationService.currentPage()! }} de {{ simpsonsResource.value()!.pages }}
+      </span>
+      <div class="join">
+        <a
+          class="join-item btn btn-sm"
+          [class.btn-disabled]="paginationService.currentPage()! <= 1"
+          [routerLink]="[]"
+          [queryParams]="{ page: paginationService.currentPage()! - 1 }"
+        >
+          «
+        </a>
+        <button class="join-item btn btn-sm btn-active">
+          {{ paginationService.currentPage()! }}
+        </button>
+        <a
+          class="join-item btn btn-sm"
+          [class.btn-disabled]="paginationService.currentPage()! >= simpsonsResource.value()!.pages"
+          [routerLink]="[]"
+          [queryParams]="{ page: paginationService.currentPage()! + 1 }"
+        >
+          »
+        </a>
+      </div>
+    </div>
+
     <div class="overflow-x-auto rounded-3xl border border-base-200 bg-base-100 shadow-sm">
       <table class="table w-full">
         <thead class="bg-base-200 text-left text-sm uppercase tracking-[0.25em] text-slate-600">
